@@ -20,17 +20,21 @@
 # KD = 0.207
 from pybricks.robotics import DriveBase
 from color_control import ColorControl
-# KP = 1.7
-# KI = 0.15
-# KD = 0.1
+KP = 0.8
+KI = 0.1
+KD = 0.01
 
 # KP = 0.7
 # KI = 0.15
 # KD = 0.01
 
-KP = 0.4 #1.1 #1.1 #0.8 #1.1 #1.3
-KI = 0.3
-KD = 0.1
+# KP = 0.4 #1.1 #1.1 #0.8 #1.1 #1.3
+# KI = 0.3
+# KD = 0.3
+
+# KI = 0.15 #0.1 #0.1 #0.15 #0.1 #0.15
+# KD = 0.01 #0.1 #0.1 #0.01 #0.1 #0.01
+
 
 # KP=2
 # KI = 0.1
@@ -43,7 +47,7 @@ LEFT_ANGLE = 20
 RIGHT_ANGLE = -20
 # C droite B gauche couleur 3 distance 2
 
-CORRECTION_FACTOR = 1.5
+CORRECTION_FACTOR = 1# 1.5
 
 # Calcul des paramètres du contrôleur PID corrigés
 KP_corrected = KP * CORRECTION_FACTOR
@@ -52,7 +56,7 @@ KD_corrected = KD * CORRECTION_FACTOR
 
 class DriveManager:
     def __init__(self, left_motor, right_motor, color_control:ColorControl, wheel_diameter=56, axle_track=112):
-        self.drivebase = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=112)
+        self.drivebase = DriveBase(left_motor, right_motor, wheel_diameter=59, axle_track=118)
         self.color_control = color_control
         self.errors = []
         self.current_angle = 0

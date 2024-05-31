@@ -35,6 +35,7 @@ class Follower():
     
     def follow_one_point(self):
         distance = self.distance_sensor.distance()
+        print('Distance:', distance)
         self.speed = max(min(self.max_velocity, self.next_speed + a * (distance - D)), 0)
         if distance < self.distace_threshold:
             self.stop = True
