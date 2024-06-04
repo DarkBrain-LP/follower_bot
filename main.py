@@ -47,7 +47,8 @@ distance_control = DistanceControl()
 color_control = ColorControl()
 lcd_control = LCDControl(brick=ev3)
 state_manager = StateManager(brick=ev3)
-# logger = Logger('distance', 'color', 'timestamp')
+
+
 # pid_logger1 = Logger('x', 'y', 'distance', 'model_angle', 'state_angle', name='_1pid_log')
 # kalman_logger = Logger('x', 'y', 'distance', 'angle', name='_1klm_kalman_log')
 # gyroscope_logger = Logger('x', 'y', 'distance', 'angle', name='_1klm_gyro_logs')
@@ -107,7 +108,8 @@ follower = Follower(left_motor, right_motor, name='Follower')
 # while True:
 #     distance = follower.get_distance()
 #     print('Distance:', distance)
-follower.follow()
+# follower.follow()
+follower.follow_one_point()
 
 # while True :#time.time() < future:
 #     drive_base.drive()
