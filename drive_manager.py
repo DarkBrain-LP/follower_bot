@@ -20,6 +20,7 @@
 # KD = 0.207
 from pybricks.robotics import DriveBase
 from color_control import ColorControl
+from pybricks.tools import wait
 # KP = 1.7
 # KI = 0.15
 # KD = 0.1
@@ -28,15 +29,15 @@ from color_control import ColorControl
 # KI = 0.15
 # KD = 0.01
 
-KP = 0.4 #1.1 #1.1 #0.8 #1.1 #1.3
-KI = 0.3
-KD = 0.1
+KP = 1.5 #1.1 #1.1 #0.8 #1.1 #1.3
+KI = 0.1
+KD = 0.01
 
 # KP=2
 # KI = 0.1
 # KD = 0.005
 
-DEFAULT_SPEED = 125
+DEFAULT_SPEED = 96
 DEFAULT_TURN_RATE = 0
 ERROR_LIMIT = 10
 LEFT_ANGLE = 20
@@ -58,7 +59,7 @@ class DriveManager:
         self.current_angle = 0
         self.speed = DEFAULT_SPEED
     
-    def drive(self, speed=None, turn_rate=None):
+    def  drive(self, speed=None, turn_rate=None):
         if speed is not None and turn_rate is not None:
             self.drivebase.drive(speed, turn_rate)
             return
@@ -70,7 +71,7 @@ class DriveManager:
             self.current_angle = turn_rate
             self.drivebase.drive(self.speed, self.current_angle)
             return
-        
+        print('error', self.color_control.mesure_error())
         self.errors.append(self.color_control.mesure_error())
         while KI*sum(self.errors) >= ERROR_LIMIT:
             self.errors = self.errors[100:]
@@ -84,6 +85,7 @@ class DriveManager:
         # self.drivebase.drive(speed, turn_rate)
         self.drivebase.drive(self.speed, self.current_angle)
         # print(self.current_angle)
+        wait(10)
 
     def reset(self):
         self.drivebase.reset()
